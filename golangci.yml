@@ -1,0 +1,30 @@
+linters:
+  enable:
+    - govet
+    - errcheck
+    - staticcheck
+    - gosimple
+    - ineffassign
+    - unused
+    - misspell
+
+linters-settings:
+  staticcheck:
+    checks:
+      - all
+      - "-SA1029"
+
+  errcheck:
+    ignore: fmt:.*,encoding/json:.*
+
+run:
+  deadline: 5m
+  tests: true
+  skip-dirs:
+    - vendor/
+
+issues:
+  exclude-rules:
+    - linters:
+        - staticcheck
+      text: "SA1029:"  
